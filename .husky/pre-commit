@@ -1,0 +1,6 @@
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks git --pre-commit --staged --redact --no-banner || exit 1
+else
+  echo "warning: gitleaks not installed (brew install gitleaks). CI will still scan."
+fi
+pnpm exec lint-staged

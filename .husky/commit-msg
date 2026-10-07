@@ -1,0 +1,2 @@
+sh scripts/no-ai-attribution.sh "$1" || exit 1
+pnpm exec commitlint --edit "$1"

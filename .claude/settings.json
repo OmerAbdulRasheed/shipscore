@@ -1,0 +1,7 @@
+{
+  "attribution": { "commit": "", "pr": "" },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "deny": ["Read(./.env)", "Read(./.env.*)", "Read(./.vercel/**)"]
+  }
+}

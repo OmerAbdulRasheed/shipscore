@@ -30,6 +30,20 @@ jobs:
       - run: pnpm test
       - run: pnpm build
 
+  branch-policy:
+    name: Branch policy
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: main accepts PRs from staging only
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "$BASE_REF" = "main" ] && [ "$HEAD_REF" != "staging" ]; then
+            echo "PRs into main must come from staging (got: $HEAD_REF)"; exit 1
+          fi
+
   commit-policy:
     name: Commit messages
     if: github.event_name == 'pull_request'
